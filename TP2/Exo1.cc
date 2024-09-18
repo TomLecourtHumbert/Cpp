@@ -78,13 +78,24 @@ int main ()
   p2.affiche();
   Personne p3(p1);
   afficher(p3);
-  compare(p1,p3);
+  if(compare(p1,p2))
+    cout << "Ils sont identiques" << endl;
+  else
+    cout << "Ils ne sont pas identiques" << endl;
+  if(compare(p1,p3))
+    cout << "Ils sont identiques" << endl;
+  else
+    cout << "Ils ne sont pas identiques" << endl;
+  if(compare(p1,p1))
+    cout << "Ils sont identiques" << endl;
+  else
+    cout << "Ils ne sont pas identiques" << endl;
   return 0;
 }
 
 // Cette fonction compare deux Personnes, si elles ont les mêmes valeurs c'est-à-dire le même nom,
 // prénom et âge alors la fonction retourne true, false sinon
-// Après Q6 : la fonction compare les adresses des deux objets Personne
+
 bool compare ( Personne P1, Personne P2 )
 {
   if ( P1.getNom() == P2.getNom() &&
