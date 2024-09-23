@@ -11,7 +11,7 @@ class Objet{
     int poids;
   public:
     //Objet();
-    Objet(const std::string & nom="", int volume=0, int poids=0) throw(std::invalid_argument);
+    Objet(const std::string & nom="", int volume=0, int poids=0); //throw(std::invalid_argument)
     // Aucun attribut de la classe ne pointe sur une adresse dynamiquement
     // Donc pas de constructeur par copie, de destructeur ou d'opérateur = à définir
     // Définis automatiquement
@@ -19,13 +19,13 @@ class Objet{
     int getPoids() const;
     void setNom(const std::string &);
     void setPoids(int);
-    bool estVide();
+    bool estVide() const;
     std::ostream& afficher(std::ostream&) const;
     std::istream& saisir(std::istream&);
     bool operator == (const Objet &) const;
 };
 
-std::istream& operator>>(std::istream&);
-std::ostream& operator<<(std::ostream&) const;
+std::ostream& operator<<(std::ostream&, const Objet &);
+std::istream& operator>>(std::istream&, Objet &);
 
 #endif

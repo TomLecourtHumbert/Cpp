@@ -27,10 +27,10 @@ void Objet :: setNom(const std::string & nom){
   this -> nom = nom;
 }
 void Objet :: setPoids(int poids){
-  this -> poids = poids
+  this -> poids = poids;
 }
-bool Objet :: estVide(){
-  if (this -> volume === 0 || this -> poids === 0 || this -> nom === "")
+bool Objet :: estVide() const{
+  if (this -> volume == 0 || this -> poids == 0 || this -> nom == "")
     return true;
   return false;
 }
@@ -42,12 +42,12 @@ std::istream& Objet :: saisir(std::istream& in){
   in >> this -> nom >> this -> volume >> this -> poids;
   return in;
 }
-std::ostream & operator<<(std::ostream & out, const Objet & obj) const{
+std::ostream & operator<<(std::ostream & out, const Objet & obj){
   return obj.afficher(out);
 }
 std::istream & operator>>(std::istream & in, Objet & obj){
   return obj.saisir(in);
 }
 bool Objet :: operator==(const Objet & obj) const{
-  return this->nom * obj.nom == this->volume * obj.volume == this->poids * obj.poids;
+  return this->nom == obj.nom && this->volume == obj.volume && this->poids == obj.poids;
 }
