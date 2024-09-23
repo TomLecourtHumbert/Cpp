@@ -17,3 +17,13 @@ int main()
     cout << "L'objet 1 a un poids ou un volume nul" << endl;
   return 0;
 }
+
+/******************************
+Lampe/30/10
+Ampoule
+5
+2
+Ampoule/5/2
+Bureau/0/80
+L'objet 3 a un poids ou un volume nul
+******************************/
