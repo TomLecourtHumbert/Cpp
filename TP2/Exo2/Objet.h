@@ -17,8 +17,15 @@ class Objet{
     // Définis automatiquement
     int getVolume() const;
     int getPoids() const;
-    void setNom(const std::string & nom);
-    void setPoids(int poids);
+    void setNom(const std::string &);
+    void setPoids(int);
     bool estVide();
     std::ostream& afficher(std::ostream&) const;
+    std::istream& saisir(std::istream&);
+    bool operator == (const Objet &) const;
 };
+
+std::istream& operator>>(std::istream&);
+std::ostream& operator<<(std::ostream&) const;
+
+#endif
