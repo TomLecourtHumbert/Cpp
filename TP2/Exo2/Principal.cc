@@ -1,4 +1,5 @@
 #include "Objet.h"
+#include "Carton.h"
 #include <iostream>
 using namespace std;
 
@@ -15,6 +16,10 @@ int main()
     cout << "L'objet 3 a un poids ou un volume nul" << endl;
   if (o1.estVide())
     cout << "L'objet 1 a un poids ou un volume nul" << endl;
+  Carton C(1000,1000);
+  C += Objet("Lampe", 5 , 50);
+  C[0].afficher(cout);
+  C.afficher(cout);
   return 0;
 }
 
