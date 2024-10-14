@@ -21,16 +21,18 @@ class VecteurND{
     VecteurND operator+ (const VecteurND &) const;
     VecteurND operator- () const;
     VecteurND operator* (int) const;
-    VecteurND operator< (const VecteurND &) const;
-    double & operator[ ](int);
+    bool operator< (const VecteurND &) const;
+    double & operator[ ](int) const;
 
     unsigned int getDim() const;
     std::ostream& afficher(std::ostream&) const;
+    std::istream& saisir(std::istream&);
     double norme() const;
     double scalaire(const VecteurND &) const;
 };
 
 std::ostream & operator<<(std::ostream &, const VecteurND &);
 std::istream & operator>>(std::istream &, VecteurND &);
+VecteurND operator* (int, VecteurND &);
 
 #endif

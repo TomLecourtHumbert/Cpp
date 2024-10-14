@@ -61,7 +61,7 @@ VecteurND :: ~VecteurND(){
   }
 }
 
-VecteurND & VecteurND :: operator = (const VecteurND & v){
+VecteurND & VecteurND :: operator= (const VecteurND & v){
   if (this->coord != NULL){
     delete [] this->coord;
     this->coord = NULL;
@@ -79,8 +79,8 @@ VecteurND & VecteurND :: operator = (const VecteurND & v){
   return *this;
 }
 
-double VecteurND :: operator[](int i) const{
-  return (*this)[i];
+double& VecteurND :: operator[ ](int i) const{
+  return (*this).coord[i];
 }
 
 unsigned int VecteurND :: getDim() const{
@@ -95,6 +95,13 @@ std::ostream& VecteurND :: afficher(std::ostream& o) const{
   return o;
 }
 
+std::istream& VecteurND :: saisir(std::istream & in){
+  cout<<"Coordonnées : ";
+  for (int i=0 ; i < (*this).getDim() ; i++)
+    in >> this->coord[i];
+  return in;
+}
+
 double VecteurND :: scalaire(const VecteurND & v) const{
   double res = 0;
   for (int i=0 ; i < this->dim ; i++)
@@ -106,15 +113,31 @@ double VecteurND :: norme() const{
   return sqrt(this->scalaire(*this));
 }
 
+
+VecteurND VecteurND :: operator+ (const VecteurND & v) const{
+  return (*this) + v;
+}
+
+VecteurND VecteurND :: operator- () const{
+  return VecteurND((*this) * -1);
+}
+
+VecteurND VecteurND :: operator* (int nb) const{
+  return (*this) * nb;
+}
+
+bool VecteurND :: operator< (const VecteurND & v) const{
+  return (*this).norme() < v.norme();
+}
+
 std::ostream & operator<<(std::ostream & out, const VecteurND & v){
   return v.afficher(out);
 }
 
 std::istream & operator>>(std::istream & in, VecteurND & v){
-  unsigned int dim;
-  double * coord;
-  in >> dim >> coord;
-  this->dim = dim;
-  this->coord = coord;
-  return in;
+  return v.saisir(in);
+}
+
+VecteurND operator* (int nb, VecteurND & v){
+  return v * nb;
 }

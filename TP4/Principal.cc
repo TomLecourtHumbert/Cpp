@@ -16,6 +16,20 @@ int main()
   v4.afficher(cout);
   cout << v3.scalaire(v5) << endl;
   cout << v3.norme() << endl;
-  // Constructeur appelé automatiquement
+  // Destructeur appelé automatiquement
+
+  //Tests de la surcharge des opérateurs
+  cin >> v5;
+  cout << v5;
+  if(v3 < v5)
+    cout << "v5 a une norme plus grande" << endl;
+  else
+    cout << "v3 a une norme plus grande" << endl;
+  cout << v5[3] << endl;
+  VecteurND v6(v5);
+  VecteurND v7(v3);
+  //cout << v6 * 2 << endl;
+  //cout << v6 + v7 << endl;
+  //cout << v6 - << endl;
   return 0;
 }
