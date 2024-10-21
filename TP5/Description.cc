@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Description :: Description(const string & chaine)throw (invalid_argument)
+Description :: Description(const string & chaine)
 {
   if(!estValide(chaine))
     throw invalid_argument("Description non valide");
@@ -33,7 +33,7 @@ Description :: Description(const Description & d)
   if(d.taille == 0)
     this->elements = NULL;
   else
-    this->elements = new string[d.elements];
+    this->elements = new string[d.taille];
 
   for(unsigned int i = 0; i < d.taille; i++)
     this->elements[i] = d.elements[i];
@@ -41,7 +41,7 @@ Description :: Description(const Description & d)
 
 Description :: ~Description()
 {
-  if (this->taille != NULL){
+  if (this->taille != 0){
     delete [] this->elements;
     this->elements = NULL;
   }
@@ -49,7 +49,7 @@ Description :: ~Description()
 
 Description & Description :: operator= (const Description & d)
 {
-  if (this->taille != NULL){
+  if (this->taille != 0){
     delete [] this->elements;
     this->elements = NULL;
   }
@@ -59,7 +59,7 @@ Description & Description :: operator= (const Description & d)
   if(d.taille == 0)
     this->elements = NULL;
   else
-    this->elements = new string[d.elements];
+    this->elements = new string[d.taille];
 
   for(unsigned int i = 0; i < d.taille; i++)
     this->elements[i] = d.elements[i];

@@ -131,7 +131,8 @@ bool VecteurND :: operator< (const VecteurND & v) const{
 }
 
 std::ostream & operator<<(std::ostream & out, const VecteurND & v){
-  return v.afficher(out);
+  v.afficher(out)
+  return out;
 }
 
 std::istream & operator>>(std::istream & in, VecteurND & v){

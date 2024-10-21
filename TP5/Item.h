@@ -15,12 +15,12 @@ private:
   Description ingredients;
 
 public :
-  Item(const std::string &, double, const std::string & = "")throw (std::invalid_argument);
-  virtual std::ostream & affiche(std::ostream &);
+  Item(const std::string &, double, const std::string & = "");
+  virtual void affiche(std::ostream &)const;
   virtual bool operator == (const Item *) const;
   virtual bool operator < (const Item *) const=0;
   // const=0   =>   Classe devient abstraite automatiquement (non instanciable), méthodes virtuelles pures
-  virtual string getType() const=0;
+  virtual std::string getType() const=0;
   virtual ~Item() {};
 };
 

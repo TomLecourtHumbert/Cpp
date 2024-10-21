@@ -11,7 +11,7 @@ private:
   unsigned int taille;
   std::string * elements;
 public :
-  Description(const std::string &)throw (std::invalid_argument);
+  Description(const std::string &);
   /* Pointe sur une adresse dynamiquement */
   Description(const Description &);
   ~Description();

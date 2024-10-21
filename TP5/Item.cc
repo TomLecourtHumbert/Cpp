@@ -3,35 +3,27 @@
 
 using namespace std;
 
-Item :: Item(const string & nom, double prix, const string & ingredients) throw(invalid_argument)
+Item :: Item(const string & nom, double prix, const string & chaine):ingredients(chaine) // Constructeur parent dans def
 {
   this->nom = nom;
   this->prix = prix;
-  this->ingredients = Description(ingredients);
+  //this->ingredients = Description(chaine);
 }
 
-std::ostream & Item :: affiche(std::ostream & o)
+void Item :: affiche(std::ostream & o)const
 {
   o << this->nom << "     " << this->prix << endl;
   o << "     ";
-  for(int i = 0; i < this->ingredients ; i++)
-    o << this->ingredients[i] << ", ";
-  return o;
+  o << this->ingredients;
 }
 
 bool Item :: operator== (const Item * i) const
 {
-  if (this->nom != i.nom || this->prix != i.prix)
-    return false;
-  for(int i = 0; i < i.ingredients ; i++){
-    if (this->ingredients[i] != i.ingredients[i])
-      return false;
-  }
-  return true;
+ return this->nom == i->nom && this->prix == i->prix && this->ingredients == i->ingredients;
 }
 
-std::ostream & operator<< (std::ostream & o, const Item & e)
+std::ostream & operator<< (std::ostream & o, const Item & i)
 {
-  e.affiche(o);
+  i.affiche(o);
   return o;
 }
