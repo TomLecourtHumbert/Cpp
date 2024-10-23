@@ -1,61 +1,29 @@
+#include "Item.h"
 #include "Boisson.h"
 #include "Mets.h"
 
 using namespace std;
 
-Boisson :: Boisson(const string & nom, double prix, const string & ingredients, bool alcool)
+Boisson :: Boisson(const std::string & nom, double prix, bool alcool, const std::string & ingredients):Item(nom, prix, ingredients)
 {
-  this->nom = nom;
-  this->prix = prix;
-  this->ingredients = Description(ingredients);
-  this->alcool = alcool
+  this->alcool = alcool;
 }
 
-std::ostream & Boisson :: affiche(std::ostream & o)
+void Boisson :: affiche(std::ostream & o) const
 {
   o << this->nom << "     " << this->prix << endl;
-  o << "     ";
-  for(int i = 0; i < this->ingredients ; i++)
-    o << this->ingredients[i] << ", ";
-  o << endl;
   if (this->alcool)
-    o << "(alcoolisée)";
-  return o;
+    o << "     " <<"(alcoolisée)";
+  else
+    o << "     " <<"(non alcoolisée)";
 }
 
-string Boisson :: getType() const
+std::string Boisson :: getType() const
 {
-  return this->type;
+  return "Boisson";
 }
 
 bool Boisson :: operator< (const Item * i) const
 {
-  bool inferieur;
-  if(typeid(*i) == typeid(Mets)){
-    if (this->type == "Entree"){
-      inferieur = true
-    }else if (this->type == "Plat"){
-      if (i.type == "Entree"){
-        inferieur = false;
-      }else
-        inferieur = true;
-    }else if (this->type == "Dessert")
-      if (i.type == "Dessert"){
-        inferieur = true;
-      }else
-        inferieur = false;
-  }else if (typeid(*i) == typeid(Boisson)){
-    inferieur = false;
-  }
-  return inferieur;
-}
-
-bool Boisson :: operator == (const Item * I) const
-{
-   if(typeid(*I) == typeid(Boisson))
-     {
-       Boisson b = *dynamic_cast<const Boisson *> (I);
-       return Item::operator==(I) && this->type == b.type;
-     }
-   return false;
+  return true;
 }

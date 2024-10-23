@@ -8,14 +8,13 @@
 class Mets : public Item
 {
   private:
-    string type;
+    std::string type;
 
   public:
-    Mets(const std::string &, double, const std::string & = "", const std::string &)throw (std::invalid_argument);
+    Mets(const std::string &, double, const std::string &, const std::string & = "");
     virtual bool operator == (const Item *) const;
-    virtual string getType() const;
+    virtual std::string getType() const;
     virtual bool operator < (const Item *) const;
-
 };
 
 #endif

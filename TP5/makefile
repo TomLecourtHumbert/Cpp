@@ -1,5 +1,5 @@
-a.out : Description.o Item.o Mets.o Boisson.o principal.o
-	g++ Description.o Item.o Mets.o Boisson.o principal.o
+a.out : Description.o Item.o Boisson.o Mets.o principal.o
+	g++ Description.o Item.o Boisson.o Mets.o principal.o
 
 principal.o : Description.h Item.h Mets.h Boisson.h principal.cc
 	g++ -c principal.cc

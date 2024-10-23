@@ -11,11 +11,10 @@ class Boisson : public Item
     bool alcool;
 
   public:
-    Mets(const std::string &, double, const std::string & = "", bool);
-    virtual std::ostream & affiche(std::ostream &);
-    virtual bool operator == (const Item *) const;
+    Boisson(const std::string &, double, bool, const std::string & = "");
+    virtual void affiche(std::ostream &)const;
     virtual bool operator < (const Item *) const;
-    virtual string getType() const;
+    virtual std::string getType() const;
 };
 
 #endif

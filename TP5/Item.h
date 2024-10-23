@@ -9,7 +9,7 @@
 
 class Item
 {
-private:
+protected:
   std::string nom;
   double prix;
   Description ingredients;

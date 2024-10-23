@@ -1,13 +1,11 @@
+#include "Item.h"
 #include "Mets.h"
 #include "Boisson.h"
 
 using namespace std;
 
-Mets :: Mets(const string & nom, double prix, const string & ingredients, const string & type)
+Mets :: Mets(const string & nom, double prix, const string & type, const string & ingredients):Item(nom, prix, ingredients)
 {
-  this->nom = nom;
-  this->prix = prix;
-  this->ingredients = Description(ingredients);
   if (type == "Entree" || type == "Plat" || type == "Dessert"){
     this->type = type;
   }else
@@ -24,28 +22,29 @@ bool Mets :: operator == (const Item * I) const
    return false;
 }
 
-string Mets :: getType() const
+std::string Mets :: getType() const
 {
   return this->type;
 }
 
-bool Mets :: operator< (const Item * i) const
+bool Mets :: operator< (const Item * I) const
 {
   bool inferieur;
-  if(typeid(*i) == typeid(Mets)){
+  if(typeid(*I) == typeid(Mets)){
+    Mets m = *dynamic_cast<const Mets *> (I);
     if (this->type == "Entree"){
-      inferieur = true
+      inferieur = true;
     }else if (this->type == "Plat"){
-      if (i.type == "Entree"){
+      if (m.type == "Entree"){
         inferieur = false;
       }else
         inferieur = true;
     }else if (this->type == "Dessert")
-      if (i.type == "Dessert"){
+      if (m.type == "Dessert"){
         inferieur = true;
       }else
         inferieur = false;
-  }else if (typeid(*i) == typeid(Boisson)){
+  }else if (typeid(*I) == typeid(Boisson)){
     inferieur = false;
   }
   return inferieur;
