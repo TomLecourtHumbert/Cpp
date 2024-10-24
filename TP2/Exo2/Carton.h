@@ -22,7 +22,7 @@ class Carton{
     void ajouteObjet(const Objet&); //throw (std::invalid_argument)
     Carton & operator += (const Objet &);
     Carton & operator -= (const Objet &);
-    std::ostream & afficher(std::ostream &) const;
+    void afficher(std::ostream &) const;
     const Objet & operator[ ](unsigned int) const;
 };
 

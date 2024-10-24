@@ -34,16 +34,21 @@ bool Objet :: estVide() const{
     return true;
   return false;
 }
-std::ostream& Objet :: afficher(std::ostream& out) const{
+void Objet :: afficher(std::ostream& out) const{
   out << this -> nom << "/" << this -> volume << "/" << this -> poids;
-  return out;
 }
 std::istream& Objet :: saisir(std::istream& in){
-  in >> this -> nom >> this -> volume >> this -> poids;
+  cout << "Nom de l'objet : ";
+  in >> this -> nom;
+  cout << "Volume de l'objet : ";
+  in >> this -> volume;
+  cout << "Poids de l'objet : ";
+  in >> this -> poids;
   return in;
 }
 std::ostream & operator<<(std::ostream & out, const Objet & obj){
-  return obj.afficher(out);
+  obj.afficher(out);
+  return out;
 }
 std::istream & operator>>(std::istream & in, Objet & obj){
   return obj.saisir(in);

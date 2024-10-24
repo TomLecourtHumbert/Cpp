@@ -20,7 +20,7 @@ class Objet{
     void setNom(const std::string &);
     void setPoids(int);
     bool estVide() const;
-    std::ostream& afficher(std::ostream&) const;
+    void afficher(std::ostream&) const;
     std::istream& saisir(std::istream&);
     bool operator == (const Objet &) const;
 };
