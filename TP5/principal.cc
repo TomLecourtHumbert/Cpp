@@ -29,7 +29,7 @@ int main()
   std::sort(carte.begin(), carte.end(), trier);
 
   cout << endl << "Carte :" << endl;
-
+  
   for(int i=0; i < carte.size(); i++)
     cout << *carte[i] << endl;
 
