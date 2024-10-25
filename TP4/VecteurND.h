@@ -3,11 +3,15 @@
 
 #include <stdexcept>
 #include <ostream>
+#include <vector>
+using namespace std;
+
 
 class VecteurND{
   private:
     unsigned int dim;
     double * coord;
+    //std::vector<double> coord;
   public:
     VecteurND();
     VecteurND(unsigned int);
@@ -18,9 +22,9 @@ class VecteurND{
     ~VecteurND();
     VecteurND & operator = (const VecteurND &);
 
-    VecteurND operator+ (const VecteurND &) const;
-    VecteurND operator- () const;
-    VecteurND operator* (int) const;
+    VecteurND operator+ (const VecteurND &);
+    VecteurND operator- (const VecteurND &);
+    VecteurND operator* (int);
     bool operator< (const VecteurND &) const;
     double & operator[ ](int) const;
 

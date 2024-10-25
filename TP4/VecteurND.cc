@@ -1,4 +1,5 @@
 #include "VecteurND.h"
+#include <vector>
 #include <iostream>
 #include <math.h>
 using namespace std;
@@ -14,6 +15,7 @@ VecteurND :: VecteurND(unsigned int dim){
     this->coord = new double[dim];
     for(int i = 0; i < dim; i++)
       this->coord[i] = 0;
+
   }
   else
     this->coord = NULL;
@@ -25,6 +27,7 @@ VecteurND :: VecteurND(unsigned int dim, double val){
     this->coord = new double[dim];
     for(int i = 0; i < dim; i++)
       this->coord[i] = val;
+    //this->coord = std::vector<double>(dim, val);
   }
   else
     this->coord = NULL;
@@ -80,7 +83,7 @@ VecteurND & VecteurND :: operator= (const VecteurND & v){
 }
 
 double& VecteurND :: operator[ ](int i) const{
-  return (*this).coord[i];
+  return this->coord[i];
 }
 
 unsigned int VecteurND :: getDim() const{
@@ -96,7 +99,7 @@ std::ostream& VecteurND :: afficher(std::ostream& o) const{
 }
 
 std::istream& VecteurND :: saisir(std::istream & in){
-  cout<<"Coordonnées : ";
+  cout<<"Coordonnées ("<<(*this).getDim()<<" fois) : ";
   for (int i=0 ; i < (*this).getDim() ; i++)
     in >> this->coord[i];
   return in;
@@ -114,16 +117,32 @@ double VecteurND :: norme() const{
 }
 
 
-VecteurND VecteurND :: operator+ (const VecteurND & v) const{
-  return (*this) + v;
+VecteurND VecteurND :: operator+ (const VecteurND & v){
+  int dim;
+  if(v.getDim() > this->dim)
+    dim = v.getDim();
+  else
+    dim = this->dim;
+  for(int i = 0; i < dim; i++)
+    (*this).coord[i] = (*this).coord[i] + v.coord[i];
+  return (*this);
 }
 
-VecteurND VecteurND :: operator- () const{
-  return VecteurND((*this) * -1);
+VecteurND VecteurND :: operator- (const VecteurND & v){
+  int dim;
+  if(v.getDim() > this->dim)
+    dim = v.getDim();
+  else
+    dim = this->dim;
+  for(int i = 0; i < dim; i++)
+    (*this).coord[i] = (*this).coord[i] - v.coord[i];
+  return (*this);
 }
 
-VecteurND VecteurND :: operator* (int nb) const{
-  return (*this) * nb;
+VecteurND VecteurND :: operator* (int nb){
+  for(int i = 0; i < this->dim; i++)
+    (*this).coord[i] = (*this).coord[i] * nb;
+  return (*this);
 }
 
 bool VecteurND :: operator< (const VecteurND & v) const{
@@ -131,7 +150,7 @@ bool VecteurND :: operator< (const VecteurND & v) const{
 }
 
 std::ostream & operator<<(std::ostream & out, const VecteurND & v){
-  v.afficher(out)
+  v.afficher(out);
   return out;
 }
 

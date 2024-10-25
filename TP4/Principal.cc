@@ -25,11 +25,15 @@ int main()
     cout << "v5 a une norme plus grande" << endl;
   else
     cout << "v3 a une norme plus grande" << endl;
-  cout << v5[3] << endl;
+  cout << v3[3] << endl;
   VecteurND v6(v5);
   VecteurND v7(v3);
-  //cout << v6 * 2 << endl;
-  //cout << v6 + v7 << endl;
-  //cout << v6 - << endl;
+  cout << v6;
+  v6 * 2;
+  cout << v6;
+  v6 + v7;
+  cout << v6;
+  v6 - v7;
+  cout << v6;
   return 0;
 }
